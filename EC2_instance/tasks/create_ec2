@@ -1,0 +1,14 @@
+---
+ - name: Create a EC2 Instance
+   amazon.aws.ec2:
+     key_name: mykey
+     instance_type: t2.micro
+     image: ami-123456
+     wait: yes
+     region: us-east-2
+     group: webserver
+     count: 3
+     vpc_subnet_id: subnet-29e63245
+     assign_public_ip: yes
+     aws_access_key:
+     aws_secret_key:

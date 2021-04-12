@@ -6,11 +6,10 @@ Postgressql database creation
 Requirements
 ------------
 
-Pacckage Needed
+Package Needed
 
-1)Python
-2)Pip3
-
+1) Python
+2) Pip3
 
 Role Variables
 --------------
@@ -31,13 +30,13 @@ A list of other roles hosted on Galaxy should go here, plus any details in regar
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too
 
 ---
- - name: Roles main file
-   hosts: postgres
+ - name: Executing a Role
+   hosts: <<Group/Hostname>>
    tasks:
-     - name: Include role
+     - name: include role
        include_role:
          name: Postgressql_db
 

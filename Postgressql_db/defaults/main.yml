@@ -1,6 +1,6 @@
 ---
 # defaults file for Postgressql_db
-db_name: postgress_db
-user_name: thinknyx
-password: Thinknyx@07
-schema_name: thinknyx_schema
+db_name: 'postgress_db'
+user_name: 'thinknyx'
+password: 'Thinknyx@07'
+schema_name: 'thinknyx_schema'

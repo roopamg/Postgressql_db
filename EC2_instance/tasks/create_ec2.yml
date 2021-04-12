@@ -14,6 +14,6 @@
        name: New_Postgres_Server
      vpc_subnet_id: subnet-00e6b24c
      assign_public_ip: yes
-     aws_access_key: AKIAYGTMJ4U2JSLOYHAG
-     aws_secret_key: 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
+     aws_access_key: 
+     aws_secret_key: 
    register: ec2

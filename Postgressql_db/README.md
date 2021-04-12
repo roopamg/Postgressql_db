@@ -31,7 +31,7 @@ Example Playbook
 ----------------
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too
-
+```
 ---
  - name: Executing a Role
    hosts: <<Group/Hostname>>
@@ -39,7 +39,7 @@ Including an example of how to use your role (for instance, with variables passe
      - name: include role
        include_role:
          name: Postgressql_db
-
+```
 License
 -------
 

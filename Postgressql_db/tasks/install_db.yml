@@ -6,6 +6,11 @@
    apt_key:
      url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
      state: present
+ 
+ - name: install python3-pip
+   apt:
+     name: python3-pip
+     state: present
 
  - name: Run the equivalent of "apt-get update" as a separate step
    apt:
@@ -23,25 +28,40 @@
      - postgresql-contrib-12
      - libpq-dev
      - postgresql-server-dev-12
+ 
+ - name: Make sure psycopg2 is installed
+   pip:
+    name: psycopg2
+    state: present
 
  - name: Create a new database with name "acme"
+   become: true
+   become_user: postgres
    postgresql_db:
      name: postgress_db
 
  - name: Connect to acme database and set user's password with no expire date
+   become: true
+   become_user: postgres
    postgresql_user:
      db: postgress_db
      name: thinknyx
      password: Thinknyx@07
-     priv: "CONNECT/products:ALL"
+#    priv: "CONNECT/products:ALL"
+     priv: ALL
+     state: present
      expires: infinity
 
  - name: Create a new schema with name acme in test database
+   become: true
+   become_user: postgres
    postgresql_schema:
      db: postgress_db
      name: thinknyx_schema
 
  - name: Dump an existing database to a file
+   become: true
+   become_user: postgres
    postgresql_db:
      name: postgress_db
      state: dump

@@ -1,2 +1,2 @@
 ---
-# tasks file for EC2_instance
+ - include: create_ec2.yml

@@ -38,15 +38,15 @@
    become: true
    become_user: postgres
    postgresql_db:
-     name: postgress_db
+     name: "{{ db_name }}"
 
  - name: Connect to acme database and set user's password with no expire date
    become: true
    become_user: postgres
    postgresql_user:
-     db: postgress_db
-     name: thinknyx
-     password: Thinknyx@07
+     db: "{{ db_name }}"
+     name: "{{ user_name }}"
+     password: "{{ password }}"
 #    priv: "CONNECT/products:ALL"
      priv: ALL
      state: present
@@ -56,13 +56,13 @@
    become: true
    become_user: postgres
    postgresql_schema:
-     db: postgress_db
-     name: thinknyx_schema
+     db: "{{ db_name }}"
+     name: "{{ schema_name }}"
 
  - name: Dump an existing database to a file
    become: true
    become_user: postgres
    postgresql_db:
-     name: postgress_db
+     name: "{{ db_name }}"
      state: dump
      target: /tmp/dump.sql

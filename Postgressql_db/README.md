@@ -6,12 +6,22 @@ Postgressql database creation
 Requirements
 ------------
 
-Python package is needed
+Pacckage Needed
+
+1)Python
+2)Pip3
+
 
 Role Variables
 --------------
 
 Variables are added in defaults directory
+
+1) db_name: 'postgress_db'
+2) user_name: 'thinknyx'
+3) password: 'Thinknyx@07'
+4) schema_name: 'thinknyx_schema'
+
 
 Dependencies
 ------------

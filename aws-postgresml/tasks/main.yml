@@ -1,0 +1,44 @@
+---
+- name: install apt-transport-https
+  apt: 
+    name: apt-transport-https
+    state: present
+  become: yes
+
+- name: public key
+  command: sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 6494C6D6997C215E
+
+#- name: installing pip3
+#  apt:
+#    update_cache: yes
+#    name: python3-pip
+#    state: present
+#    become: yes
+
+- name: installing boto
+  pip:
+    name: boto-3
+    executable: pip-3
+    state: present
+  become: yes
+
+- name: Create a postgres db on aws
+  rds:
+    command: create
+    instance_name: Test-DB
+    db_engine: postgres
+    size: 21
+    instance_type: db.t2.small
+    region: ap-south-1
+    zone: ap-south-1a
+    subnet: default
+    vpc_security_groups: default
+    publicly_accessible: yes
+    wait: yes
+    username: postgres
+    password: postgres
+    aws_access_key: AKIAYGTMJ4U2JSLOYHAG
+    aws_secret_key: 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
+    tags:
+      Environment: testing
+

@@ -1,2 +1,3 @@
 ---
-# tasks file for EC2_instance
+#tasks file for AMS
+ - include: create_ec2.yml

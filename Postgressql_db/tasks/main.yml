@@ -1,2 +1,3 @@
 ---
 # tasks file for Postgressql_db
+ - include: install_db.yml

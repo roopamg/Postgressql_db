@@ -1,3 +1,6 @@
 ---
+<<<<<<< HEAD
 #tasks file for AMS
+=======
+>>>>>>> e8849d1d45bc1f172cf770dadb1a82627f62dccc
  - include: create_ec2.yml

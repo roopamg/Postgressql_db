@@ -1,13 +1,32 @@
 ---
+<<<<<<< HEAD
  - amazon.aws.ec2:
+=======
+ - name: Create a EC2 Instance
+   ec2:
+>>>>>>> e8849d1d45bc1f172cf770dadb1a82627f62dccc
      key_name: sagarthinknyx
      instance_type: t2.micro
      image: ami-0d758c1134823146a
      wait: yes
      region: us-east-2
+<<<<<<< HEAD
      group: launch-wizard-3
      count: 1
      vpc_subnet_id: default
      assign_public_ip: yes
      aws_access_key: AKIAYGTMJ4U2JSLOYHAG
      aws_secret_key: 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
+=======
+     group: sg-0065b29fa10489ab8
+     count: 1
+     instance_tags:
+       name: name
+     count_tag: 
+       name: New_Postgres_Server
+     vpc_subnet_id: subnet-00e6b24c
+     assign_public_ip: yes
+     aws_access_key: 
+     aws_secret_key: 
+   register: ec2
+>>>>>>> e8849d1d45bc1f172cf770dadb1a82627f62dccc

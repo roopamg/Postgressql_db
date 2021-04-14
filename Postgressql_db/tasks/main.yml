@@ -1,3 +1,6 @@
 ---
+<<<<<<< HEAD
 # tasks file for Postgressql_db
+=======
+>>>>>>> e8849d1d45bc1f172cf770dadb1a82627f62dccc
  - include: install_db.yml

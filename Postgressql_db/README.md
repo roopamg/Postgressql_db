@@ -1,17 +1,28 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+Postgressql database creation
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Package Needed
+```
+1) Python
+2) Pip3
+```
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Variables are added in defaults directory
+```
+1) db_name: 'postgress_db'
+2) user_name: 'thinknyx'
+3) password: 'Thinknyx@07'
+4) schema_name: 'thinknyx_schema'
+```
+
 
 Dependencies
 ------------
@@ -21,12 +32,16 @@ A list of other roles hosted on Galaxy should go here, plus any details in regar
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
-
+Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too
+```
+---
+ - name: Executing a Role
+   hosts: <<Group/Hostname>>
+   tasks:
+     - name: include role
+       include_role:
+         name: Postgressql_db
+```
 License
 -------
 

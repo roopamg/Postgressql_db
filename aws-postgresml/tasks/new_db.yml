@@ -1,0 +1,21 @@
+---
+ - name: create RDS instance
+   rds:
+     command: create
+     instance_name: Test_db
+     region: ap-south-1
+     size: 21
+     instance_type: db.t2.micro
+     db_engine: postgresql
+# Use default (latest) DB engine (e.g., 9.3.x)
+# engine_version: "{{ engine_version }}"
+     subnet: subnet-00e6b24c
+# Use default db parameter group
+# parameter_group: "{{ parameter_group }}"
+     port: 5432
+     db_name: test_db
+     username: postgresql
+     password: postgresql
+     vpc_security_groups: sg-069c33839bc665de6
+     zone: ap-south-1b
+   become: yes 

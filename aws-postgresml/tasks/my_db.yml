@@ -32,6 +32,6 @@
     instance_type: db.t2.micro
     username: mysql_admin
     password: 1nsecure
-    aws_access_key: AKIAYGTMJ4U2JSLOYHAG
-    aws_secret_key: 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 
+    aws_access_key: "{{ access_key }}"
+    aws_secret_key: "{{ secret_key}}" 
   become: yes

@@ -1,2 +1,3 @@
 ---
-- include: delete_rds.yml
+- include: create_rds_db.yml
+- include: create_database.yml

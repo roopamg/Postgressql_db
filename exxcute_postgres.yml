@@ -1,6 +1,7 @@
 ---
  - name: Roles main file 
    hosts: localhost
+   become: true
    tasks:
      - name: Include role
        include_role:

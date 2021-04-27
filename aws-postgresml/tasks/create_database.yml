@@ -1,0 +1,40 @@
+---
+- name: Create a new database
+  become: true
+  become_user: postgres
+  postgresql_db:
+    name: "{{ db_name }}"
+
+- name: Connect to acme database and set user's password with no expire date
+  become: true
+  become_user: postgres
+  postgresql_user:
+    db: "{{ db_name }}"
+    name: "{{ user_name }}"
+    password: "{{ password }}"
+#    priv: "CONNECT/products:ALL"
+    priv: ALL
+    state: present
+    expires: infinity
+
+- name: Create a new schema with name acme in test database
+  become: true
+  become_user: postgres
+  postgresql_schema:
+    db: "{{ db_name }}"
+    name: "{{ schema_name }}"
+
+- name: dump a database file
+  copy:
+    dest: /etc/migrate.sql
+    src: migrate.sql
+  register: sql_file_path
+
+- name: run custom sql script
+  command: "psql testdb -f {{ sql_file_path.dest }}"
+  become_user: postgres
+  register: sql_response_file
+
+- name: debug response
+  debug:
+    var: sql_response_file

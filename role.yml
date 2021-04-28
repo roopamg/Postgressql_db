@@ -1,7 +1,0 @@
----
- - name: Roles main file 
-   hosts: postgres
-   tasks:
-     - name: Include role
-       include_role:
-         name: Postgressql_db

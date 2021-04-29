@@ -14,7 +14,7 @@
       Name: ec2_machine2
     exact_count: 1
     assign_public_ip: yes
-    aws_access_key: AKIAYGTMJ4U2JSLOYHAG
-    aws_secret_key: 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
+    aws_access_key: "{{ access_key }}"
+    aws_secret_key: "{{ secret_key }}"
   become: yes
   register: ec2

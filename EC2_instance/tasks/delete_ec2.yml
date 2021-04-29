@@ -1,10 +1,10 @@
 ---
 - name: Terminating EC2 instance
   ec2:
-    region: ap-south-1
-    instance_ids: i-0be72e9afc006ca58
+    region: "{{ region_name }}"
+    instance_ids: "{{ instance_id }}"
     state: absent
     aws_access_key: "{{ access_key }}"
-    aws_secret_key: "{{ secret_key}}"
+    aws_secret_key: "{{ secret_key }}"
   become: yes
   register: ec2_delete

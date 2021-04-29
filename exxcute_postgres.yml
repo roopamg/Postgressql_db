@@ -1,9 +1,8 @@
 ---
- - name: Roles main file 
-   hosts: localhost
-   become: true
-   tasks:
-     - name: Include role
-       include_role:
-         name: aws-postgresml
-
+- name: Roles main file 
+  hosts: localhost
+  become: true
+  tasks:
+    - name: Include role
+      include_role:
+        name: EC2_instance

@@ -1,18 +1,18 @@
 ---
 - name: Create EC2 instances
   ec2:
-    key_name: sagarthinknyx
-    region: ap-south-1
-    instance_type: t2.micro
-    image: ami-0d758c1134823146a
-    vpc_subnet_id: subnet-00e6b24c
+    key_name: "{{ key_name }}"
+    region: "{{ region_name }}"
+    instance_type: "{{ instance_type }}"
+    image: "{{ ami_id }}"
+    vpc_subnet_id: "{{ vpc_snid }}"
     group: default
     wait: yes
     instance_tags:
-      Name: ec2_machine2
+      Name: "{{ instance_name }}"
     count_tag:
-      Name: ec2_machine2
-    exact_count: 1
+      Name: "{{ instance_count_tag }}"
+    exact_count: "{{ instance_count }}"
     assign_public_ip: yes
     aws_access_key: "{{ access_key }}"
     aws_secret_key: "{{ secret_key }}"

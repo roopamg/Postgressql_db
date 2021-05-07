@@ -1,18 +1,17 @@
 ---
-- name: Create rds
-  rds:
+- rds:
     command: create
-    instance_name: test_database
+    instance_name: new-database
     db_engine: postgres
-    region: ap-south-1
-    zone: ap-south-1b
     size: 10
+    zone: ap-south-1b
+    region: ap-south-1
     port: 5432
-    vpc_security_groups: sg-069c33839bc665de6
-    subnet: default
     instance_type: db.t2.micro
-    username: admin
-    password: admin
+    username: postdb
+    password: 1nsecure
     aws_access_key: AKIAYGTMJ4U2JSLOYHAG
     aws_secret_key: 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
-
+    tags:
+      Environment: testing
+      Application: cms

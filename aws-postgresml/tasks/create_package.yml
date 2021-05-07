@@ -19,3 +19,15 @@
     state: present
   become: yes
 
+- name: installing boto
+  pip:
+    name: psycopg2-binary
+    executable: pip3
+    state: present
+  become: yes
+
+- name: installing psql
+  apt:
+    name: postgresql-client
+    state: present
+  become: yes

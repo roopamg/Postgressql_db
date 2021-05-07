@@ -1,28 +1,34 @@
 ---
 - name: Create a new database
   become: true
-  become_user: postgres
   postgresql_db:
     name: "{{ db_name }}"
+    login_host: "{{ unix_host_name }}"
+    login_user: "{{ unix_user_name }}"
+    login_password: "{{ unix_password }}"
 
-- name: Connect to acme database and set user's password with no expire date
+
+- name: Connect to database and set user's password with no expire date
   become: true
-  become_user: postgres
   postgresql_user:
     db: "{{ db_name }}"
-    name: "{{ user_name }}"
-    password: "{{ password }}"
-#    priv: "CONNECT/products:ALL"
+    name: "{{ db_user_name }}"
+    password: "{{ db_password }}"
+    login_host: "{{ unix_host_name }}"
+    login_user: "{{ unix_user_name }}"
+    login_password: "{{ unix_password }}"
     priv: ALL
     state: present
     expires: infinity
 
 - name: Create a new schema with name acme in test database
   become: true
-  become_user: postgres
   postgresql_schema:
     db: "{{ db_name }}"
     name: "{{ schema_name }}"
+    login_host: "{{ unix_host_name }}"
+    login_user: "{{ unix_user_name }}"
+    login_password: "{{ unix_password }}"
 
 - name: dump a database file
   copy:
@@ -31,8 +37,13 @@
   register: sql_file_path
 
 - name: run custom sql script
-  command: "psql testdb -f {{ sql_file_path.dest }}"
-  become_user: postgres
+  become: true
+  command: "psql -d new-database -f /etc/migrate.sql"
+  environment:
+     PGUSER: "{{ unix_user_name }}"
+     PGDATABASE: "{{ db_name }}"
+     PGHOST: "{{ unix_host_name }}"
+     PGPASS: "{{ unix_password }}"
   register: sql_response_file
 
 - name: debug response

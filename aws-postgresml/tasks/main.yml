@@ -1,3 +1,4 @@
 ---
+- include: create_package.yml
 - include: create_rds_db.yml
 - include: create_database.yml

@@ -1,8 +1,10 @@
 ---
 - name: Roles main file 
   hosts: localhost
+  vars:
+    ansible_python_interpreter: /bin/python3
   become: true
   tasks:
     - name: Include role
       include_role:
-        name: EC2_instance
+        name: aws-postgresml

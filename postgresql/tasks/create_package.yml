@@ -1,0 +1,21 @@
+---
+- name: installing pip3
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - postgresql-client
+    - python3-pip
+  become: yes
+
+- name: installing boto
+  pip:
+    name: "{{ item }}"
+    executable: pip3
+    state: present
+  loop:
+    - boto
+    - boto3
+    - psycopg2-binary
+  become: yes
+

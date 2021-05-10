@@ -1,0 +1,18 @@
+---
+- rds:
+    command: create
+    instance_name: "{{ db_name }}"
+    db_engine: postgres
+    size: "{{ size }}"
+    zone: "{{ zone_name }}"
+    region: "{{ region_name }}"
+    port: 5432
+    instance_type: "{{ instance_type }}"
+    username: "{{ user_name }}"
+    password: "{{ password }}"
+    aws_access_key: "{{ access_key }}"
+    aws_secret_key: "{{ secret_key }}"
+    tags:
+      Environment: testing
+      Application: cms
+

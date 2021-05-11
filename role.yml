@@ -4,4 +4,4 @@
    tasks:
      - name: Include role
        include_role:
-         name: Postgressql_db
+         name: postgresql

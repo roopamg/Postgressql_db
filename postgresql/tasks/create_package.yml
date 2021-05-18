@@ -1,21 +1,37 @@
 ---
-- name: installing pip3
-  apt:
-    name: "{{ item }}"
-    state: present
-  loop:
-    - postgresql-client
-    - python3-pip
-  become: yes
+- name: Install packages for ubuntu server
+  block:
+    - name: installing pip3
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - postgresql-client
+        - python3-pip
+      become: yes
+  when: ansible_facts['distribution'] == 'Debian'
 
-- name: installing boto
-  pip:
-    name: "{{ item }}"
-    executable: pip3
-    state: present
-  loop:
-    - boto
-    - boto3
-    - psycopg2-binary
-  become: yes
+- name: Install package for RHEL
+  block:
+    - name: installing pip3
+      yum:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - postgresql-client
+        - python3-pip
+      become: yes
+  when: ansible_facts['distribution'] == 'RHEL'
+
+  always:
+    - name: installing boto
+      pip:
+        name: "{{ item }}"
+        executable: pip3
+        state: present
+      loop:
+        - boto
+        - boto3
+        - psycopg2-binary
+      become: yes
 

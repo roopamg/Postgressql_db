@@ -3,7 +3,7 @@
   become: true
   postgresql_db:
     name: "{{ db_name }}"
-    login_host: "{{ unix_host_name }}"
+    login_host: "{{ aws_host }}"
     login_user: "{{ unix_user_name }}"
     login_password: "{{ unix_password }}"
 
@@ -14,7 +14,7 @@
     db: "{{ db_name }}"
     name: "{{ db_user_name }}"
     password: "{{ db_password }}"
-    login_host: "{{ unix_host_name }}"
+    login_host: "{{ aws_host }}"
     login_user: "{{ unix_user_name }}"
     login_password: "{{ unix_password }}"
     priv: ALL
@@ -26,7 +26,7 @@
   postgresql_schema:
     db: "{{ db_name }}"
     name: "{{ schema_name }}"
-    login_host: "{{ unix_host_name }}"
+    login_host: "{{ aws_host }}"
     login_user: "{{ unix_user_name }}"
     login_password: "{{ unix_password }}"
 
@@ -42,7 +42,7 @@
   environment:
      PGUSER: "{{ unix_user_name }}"
      PGDATABASE: "{{ db_name }}"
-     PGHOST: "{{ unix_host_name }}"
+     PGHOST: "{{ aws_host }}"
      PGPASS: "{{ unix_password }}"
   register: sql_response_file
 

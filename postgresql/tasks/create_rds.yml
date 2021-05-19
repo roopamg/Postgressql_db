@@ -15,4 +15,15 @@
     tags:
       Environment: testing
       Application: cms
+  register: rds_output
 
+- name: debug response
+  debug:
+    var: rds_output
+
+- set_fact:
+    aws_host: "{{ rds_output.instance.endpoint }}"
+
+- name: debug response
+  debug:
+    var: aws_host 

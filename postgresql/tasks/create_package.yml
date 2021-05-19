@@ -10,7 +10,7 @@
   become: yes
 
 - name: installing pip3
-  when: ansible_distribution == "rhel"
+  when: ansible_distribution == "RedHat"
   yum:
     name: "{{ item }}"
     state: present

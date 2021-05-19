@@ -30,4 +30,4 @@
 
 - name: 1 min pause for instance to get created
   pause:
-    minutes: 1
+    minutes: 12

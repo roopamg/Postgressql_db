@@ -38,7 +38,7 @@
 
 - name: run custom sql script
   become: true
-  command: "psql -d new-database -f /etc/migrate.sql"
+  command: "psql -f /etc/migrate.sql"
   environment:
      PGUSER: "{{ unix_user_name }}"
      PGDATABASE: "{{ db_name }}"

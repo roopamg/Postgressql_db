@@ -26,4 +26,8 @@
 
 - name: debug response
   debug:
-    var: aws_host 
+    var: aws_host
+
+- name: 1 min pause for instance to get created
+  pause:
+    minutes: 1
